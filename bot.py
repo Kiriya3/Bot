@@ -1,28 +1,28 @@
 import discord
-from bot_logic import gen_pass
+from discord.ext import commands
+from bot_logic import gen_pass, flip_coin, gen_emoji, current_date, current_time
 
 # la variabile intents contiene i permessi al bot
 intents = discord.Intents.default()
 # abilita il permesso a leggere i contenuti dei messaggi
 intents.message_content = True
 # crea un bot e passa gli indents
-client = discord.Client(intents=intents)
+bot = commands.Bot(command_prefix='/', intents=intents)
 
-@client.event
+@bot.event
 async def on_ready():
-    print(f'Abbiamo fatto l\'accesso come {client.user}')
+    print(f'Hai fatto l\'accesso come {bot.user}')
 
-@client.event
-async def on_message(message):
-    if message.author == client.user:
-        return
-    if message.content.startswith('$ciao'):
-        await message.channel.send("Ciao!")
-    elif message.content.startswith('$arrivederci'):
-        await message.channel.send("\U0001f642")
-    elif message.content.startswith('$genera'):
-        await message.channel.send(gen_pass(10))
-    else:
-        await message.channel.send(message.content)
+@bot.command()
+async def ciao(ctx):
+    await ctx.send(f'Ciao! Sono un bot {bot.user}!')
 
-client.run("")
+@bot.command()
+async def heh(ctx, count_heh = 5):
+    await ctx.send("he" * count_heh)
+
+@bot.command()
+async def come_stai(ctx):
+    await ctx.send("Bene")
+
+bot.run("PASSWORD")
