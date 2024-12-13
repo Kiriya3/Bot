@@ -28,3 +28,19 @@ def current_date():
 def current_time():
     now_time = datetime.now().strftime("%H:%M:%S")
     return now_time
+
+def addition(a, b):
+    result = float(a) + float(b)
+    return result
+
+def subtraction(a, b):
+    result = float(a) - float(b)
+    return result
+
+def moltiplication(a, b):
+    result = float(a) * float(b)
+    return result
+
+def division(a, b):
+    result = float(a) / float(b)
+    return result
