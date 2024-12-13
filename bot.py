@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-from bot_logic import gen_pass, flip_coin, gen_emoji, current_date, current_time
+from bot_logic import gen_pass, flip_coin, gen_emoji, current_date, current_time, addition, subtraction, moltiplication, division
 
 # la variabile intents contiene i permessi al bot
 intents = discord.Intents.default()
@@ -44,5 +44,21 @@ async def data(ctx):
 @bot.command()
 async def ora(ctx):
     await ctx.send(current_time())
+
+@bot.command()
+async def addizione(ctx, a, b):
+    await ctx.send(addition(a, b))
+
+@bot.command()
+async def sottrazione(ctx, a, b):
+    await ctx.send(subtraction(a, b))
+
+@bot.command()
+async def moltiplicazione(ctx, a, b):
+    await ctx.send(moltiplication(a, b))
+
+@bot.command()
+async def divisione(ctx, a, b):
+    await ctx.send(division(a, b))
 
 bot.run("TOKEN")
