@@ -25,4 +25,24 @@ async def heh(ctx, count_heh = 5):
 async def come_stai(ctx):
     await ctx.send("Bene")
 
-bot.run("PASSWORD")
+@bot.command()
+async def password(ctx, count_password = 5):
+    await ctx.send(gen_pass(count_password))
+
+@bot.command()
+async def moneta(ctx):
+    await ctx.send(flip_coin())
+
+@bot.command()
+async def emoji(ctx):
+    await ctx.send(gen_emoji())
+
+@bot.command()
+async def data(ctx):
+    await ctx.send(current_date())
+
+@bot.command()
+async def ora(ctx):
+    await ctx.send(current_time())
+
+bot.run("TOKEN")
